@@ -36,11 +36,11 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           IMAGE_TAG=$(git rev-parse --short HEAD)-$(date +%Y%m%d%H%M%S)
-          docker build -t ${{ secrets.ACR_REGISTRY }}/warehouse-tokyo:$IMAGE_TAG .
-          docker push ${{ secrets.ACR_REGISTRY }}/warehouse-tokyo:$IMAGE_TAG
+          docker build -t ${{ secrets.ACR_REGISTRY }}/kang-tokyo/warehouse-tokyo:$IMAGE_TAG .
+          docker push ${{ secrets.ACR_REGISTRY }}/kang-tokyo/warehouse-tokyo:$IMAGE_TAG
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
-       
-deploy-to-eci:
+    
+  deploy-to-eci:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
@@ -62,7 +62,7 @@ deploy-to-eci:
           aliyun eci CreateContainerGroup \
             --RegionId ap-northeast-1 \
             --ContainerGroupName container-group-1742216801098 \
-            --Container.1.Image ${{ secrets.ACR_REGISTRY }}/warehouse-tokyo:${{ env.IMAGE_TAG }} \
+            --Container.1.Image ${{ secrets.ACR_REGISTRY }}/kang-tokyo/warehouse-tokyo:${{ env.IMAGE_TAG }} \
             --Container.1.Name my-app-container \
             --Container.1.Cpu 1 \
             --Container.1.Memory 2 \
