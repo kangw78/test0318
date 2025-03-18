@@ -36,8 +36,11 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           IMAGE_TAG=$(git rev-parse --short HEAD)-$(date +%Y%m%d%H%M%S)
-          docker build -t ${{ secrets.ACR_REGISTRY }}/warehouse-tokyo:$IMAGE_TAG .
-          docker push ${{ secrets.ACR_REGISTRY }}/warehouse-tokyo:$IMAGE_TAG
+          IMAGE_NAME=${{ secrets.ACR_REGISTRY }}warehouse-tokyo:$IMAGE_TAG 
+
+          docker build -t "$IMAGE_NAME" .
+          docker push "$IMAGE_NAME" .
+          
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
     
   deploy-to-eci:
