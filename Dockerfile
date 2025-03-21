@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ベースイメージとしてUbuntuを使用
 FROM ubuntu:20.04
 
