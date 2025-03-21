@@ -37,7 +37,7 @@ jobs:
         run: |
           ls -la
           IMAGE_TAG=$(git rev-parse --short HEAD)-$(date +%Y%m%d%H%M%S)
-          IMAGE_NAME=registry-intl.ap-northeast-1.aliyuncs.com/kang-tokyo/warehouse-tokyo:$IMAGE_TAG 
+          IMAGE_NAME=registry-intl.ap-northeast-1.aliyuncs.com/warehouse-tokyo:$IMAGE_TAG 
 
           docker build -t "$IMAGE_NAME" .
           docker push "$IMAGE_NAME"
