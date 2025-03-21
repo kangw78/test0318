@@ -1,8 +1,9 @@
+<<<<<<< HEAD
 # ベースイメージとしてUbuntuを使用
 FROM ubuntu:20.04
 
 # 作成者情報
-LABEL maintainer="your-email@example.com"
+LABEL maintainer="xczno2@gmail.com"
 
 # 作業ディレクトリの設定
 WORKDIR /app
