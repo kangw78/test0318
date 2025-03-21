@@ -31,13 +31,13 @@ jobs:
 
       - name: Log in to Alibaba Cloud Container Registry
         run: |
-          docker login --username=${{ secrets.ACR_USERNAME }} --password=${{ secrets.ACR_PASSWORD }} ${{ secrets.ACR_REGISTRY }}
+          docker login --username=kang.nw-poc@5171341380549220 --password=kW22114615. registry-intl.ap-northeast-1.aliyuncs.com
 
       - name: Build and Push Docker Image
         run: |
           ls -la
           IMAGE_TAG=$(git rev-parse --short HEAD)-$(date +%Y%m%d%H%M%S)
-          IMAGE_NAME=registry-intl.ap-northeast-1.aliyuncs.com/warehouse-tokyo:$IMAGE_TAG 
+          IMAGE_NAME=registry-intl.ap-northeast-1.aliyuncs.com/kang-tokyo/warehouse-tokyo:$IMAGE_TAG 
 
           docker build -t "$IMAGE_NAME" .
           docker push "$IMAGE_NAME"
