@@ -61,7 +61,7 @@ jobs:
 
       - name: Deploy to Alibaba Cloud ECI
         run: |
-          aliyun eci DeleteContainerGroup --RegionId ap-northeast-1 --ContainerGroupID eci-6wedk7gyui7r0hy1x4b1 || true
+          aliyun eci DeleteContainerGroup --RegionId ap-northeast-1 --ContainerGroupId eci-6wedk7gyui7r0hy1x4b1 || true
 
           aliyun eci CreateContainerGroup \
             --RegionId ap-northeast-1 \
@@ -70,5 +70,5 @@ jobs:
             --Container.1.Name my-app-container \
             --Container.1.Cpu 1 \
             --Container.1.Memory 2 \
-            --VSwitchId ${vsw-6wedckw8ivhipmmmfbb33 \
+            --VSwitchId vsw-6wedckw8ivhipmmmfbb33 \
             --SecurityGroupId sg-6we5yo89xyhf9zuhetmt
