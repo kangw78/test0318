@@ -5,7 +5,7 @@ FROM httpd:latest
 LABEL maintainer="xczno2@gmail.com"
 
 # curlコマンドのインストール
-apt update && sudo apt install -y curl
+RUN apt update && apt install -y curl
 
 # 作業ディレクトリの設定
 WORKDIR /app
