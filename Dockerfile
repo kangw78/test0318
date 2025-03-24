@@ -1,5 +1,5 @@
-# ベースイメージとしてUbuntuを使用
-FROM ubuntu:20.04
+# ベースイメージとしてHTTPDを使用
+FROM httpd:latest
 
 # 作成者情報
 LABEL maintainer="xczno2@gmail.com"
@@ -7,11 +7,8 @@ LABEL maintainer="xczno2@gmail.com"
 # 作業ディレクトリの設定
 WORKDIR /app
 
-# 必要なパッケージをインストール（必要に応じて変更）
-RUN apt-get update && apt-get install -y \
-    curl \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+# HTTP ポート（80）を開放
+EXPOSE 80
 
 # アプリケーションファイルをコンテナにコピー
 COPY . /app
