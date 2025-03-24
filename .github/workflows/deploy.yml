@@ -17,7 +17,7 @@ jobs:
   # This workflow contains a single job called "build"
   build-and-push:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.02
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -37,7 +37,7 @@ jobs:
         run: |
           ls -la
           IMAGE_TAG=$(git rev-parse --short HEAD)-$(date +%Y%m%d%H%M%S)
-          IMAGE_NAME=${{ secrets.ACR_REGISTRY }}/kang-tokyo/warehouse-tokyo:$IMAGE_TAG 
+          IMAGE_NAME=${{ secrets.ACR_REGISTRY }}:$IMAGE_TAG 
 
           docker build -t "$IMAGE_NAME" .
           docker push "$IMAGE_NAME"
@@ -66,7 +66,7 @@ jobs:
           aliyun eci CreateContainerGroup \
             --RegionId ap-northeast-1 \
             --ContainerGroupName container-group-1742216801098 \
-            --Container.1.Image ${{ secrets.ACR_REGISTRY }}/kang-tokyo/warehouse-tokyo:${{ env.IMAGE_TAG }} \
+            --Container.1.Image ${{ secrets.ACR_REGISTRY }}:${{ env.IMAGE_TAG }} \
             --Container.1.Name my-app-container \
             --Container.1.Cpu 1 \
             --Container.1.Memory 2 \
