@@ -4,6 +4,9 @@ FROM httpd:latest
 # 作成者情報
 LABEL maintainer="xczno2@gmail.com"
 
+# curlコマンドのインストール
+apt update && sudo apt install -y curl
+
 # 作業ディレクトリの設定
 WORKDIR /app
 
