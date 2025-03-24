@@ -1,5 +1,5 @@
 # ベースイメージとしてUbuntuを使用
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 # 作成者情報
 LABEL maintainer="xczno2@gmail.com"
