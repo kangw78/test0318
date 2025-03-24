@@ -14,7 +14,8 @@ on:
 jobs:
   # このワークフローには "build-and-push" というジョブが含まれる
   build-and-push:
-    runs-on: ubuntu-latest　　# ジョブが実行されるランナーのOS
+    # ジョブが実行されるランナーのOS
+    runs-on: ubuntu-latest　
     outputs:
     # ビルドしたイメージのタグを後続のジョブに渡す
       IMAGE_TAG: ${{ steps.set-image-tag.outputs.IMAGE_TAG }}　
