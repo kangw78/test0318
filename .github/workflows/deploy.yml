@@ -61,8 +61,6 @@ jobs:
 
       - name: Deploy to Alibaba Cloud ECI
         run: |
-          aliyun eci DeleteContainerGroup --RegionId ap-northeast-1 --ContainerGroupId eci-6wedk7gyui7r0hy1x4b1 || true
-
           aliyun eci CreateContainerGroup \
             --RegionId ap-northeast-1 \
             --ContainerGroupName container-group-1742216801098 \
